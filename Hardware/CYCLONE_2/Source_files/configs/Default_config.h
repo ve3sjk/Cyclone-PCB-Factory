@@ -121,6 +121,18 @@
 		
 		spindle_holder_screwSize = 3;
 		
+	// --- EndStop Holder ---
+		boardX_size = 41;
+		boardY_size = 16.05;
+		boardZ_size = 1.62;
+	
+		holderX_size = 29;
+		holderY_size = 8;
+		holderZ_size = 6;
+		
+		endstop_screwWallSep = 2.75;
+		endstop_holder_screwsize = 3;	
+		
 	// --- Gears ---
 		axes_XgearSeparation = 37;
 	  X_rodGearRatio = 21; // Number of tooth

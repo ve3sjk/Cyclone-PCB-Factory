@@ -50,7 +50,7 @@ function animationBump(tbegin,tend,t=$t%1) = ((t >= tbegin) && (t <= tend)) ? (1
 function animatePart(n,dist=30,overlap=animated_timePerPart*0.25) = dist*animationBump((n-1)*animated_timePerPart-overlap,n*animated_timePerPart+overlap);
 
 // Include config file (size and render options)
-include <configs/1212m4.h>
+include <configs/1212m4_config.h>
 
 // Calculations
 axes_Xreference_posX	= (axes_Ysmooth_separation-axes_Xsmooth_rodLen)/2; // relative to Y reference
@@ -64,7 +64,7 @@ include <Cycl_Z_carriage.scad>
 include <Cycl_X_frames.scad>
 include <Cycl_Y_carriage.scad>
 include <Cycl_Y_frames.scad>
-
+include <Cycl_endstop_holder.scad>
 
 // This small module is used to select if an object is rendered as a 2D plane or as a 3D object
 module render_2D_or_3D() {

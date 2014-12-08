@@ -18,10 +18,10 @@
 		foot_offset 		= 25;
 		
 	// --- Axes reference position ---
-	// Note: The reference coordinates are centred like this:
-	// Y axis reference is the Y smooth rod end, BACK of RIGHT FRAME
-	// X axis reference is the frontal X smooth rod end, RIGHT FRAME
-	// Z axis reference is the Z threaded rod, at the height of the Z nut, and relative to the X reference
+		// Note: The reference coordinates are centred like this:
+		// Y axis reference is the Y smooth rod end, BACK of RIGHT FRAME
+		// X axis reference is the frontal X smooth rod end, RIGHT FRAME
+		// Z axis reference is the Z threaded rod, at the height of the Z nut, and relative to the X reference
 		axes_Yreference_height	= 40 + animatePart(5);
 		axes_Xreference_height	= 64 + animatePart(6); // relative to Y reference
 		axes_Zreference_height	= -3 + animatePart(7) + animatePart(9); // relative to X reference
@@ -51,15 +51,16 @@
 	// --- Z carriage ---
 		X_backlash_armThickness = 30;
 		
-  // --- X frames ---
+	// --- X frames ---
 		X_frames_additional_thickness = 5;
 		footThickness 			= 10;
 		corner_radius 			= 10;
 		frameFrontalThickness 	= 15;
 		
 	// --- Axes sizes ---
-	// *_rodLen = length
-	// *_rodD = diameter
+		// *_rodLen = length
+		// *_rodD = diameter
+		
 		// Y smooth rod
 			axes_Ysmooth_rodLen	= 330 + animatePart(2);
 			axes_Ysmooth_rodD	= 8.5 + animatePart(4,dist=5);
@@ -121,6 +122,20 @@
 		
 		spindle_holder_screwSize 	= 4;
 		
+		// --- EndStop Holder ---
+		boardX_size = 41;
+		boardY_size = 16.05;
+		boardZ_size = 1.62;
+	
+		holderX_size = 29;
+		holderY_size = 8;
+		holderZ_size = 6;
+		
+		endstop_screwWallSep = 2.75;
+		endstop_holder_screwsize = 3;
+		
+		
+		
 	// --- Gears ---
 		axes_XgearSeparation 		= 37;
 		X_rodGearRatio 				= 21; // Number of tooth
@@ -167,7 +182,7 @@
 		X_threaded_rod_Tolerance 	= 0.5;
 		Z_linearBearingHole_tolerance = 0.5;
 		
-// --- Render options ---
+	// --- Render options ---
 
 	// --- Part colours ---
 		blueColor = [0.3,0.6,0.9];
