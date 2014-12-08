@@ -50,7 +50,7 @@ function animationBump(tbegin,tend,t=$t%1) = ((t >= tbegin) && (t <= tend)) ? (1
 function animatePart(n,dist=30,overlap=animated_timePerPart*0.25) = dist*animationBump((n-1)*animated_timePerPart-overlap,n*animated_timePerPart+overlap);
 
 // Include config file (size and render options)
-include <configs/Default_config.h>
+include <configs/1212m4.h>
 
 // Calculations
 axes_Xreference_posX	= (axes_Ysmooth_separation-axes_Xsmooth_rodLen)/2; // relative to Y reference
