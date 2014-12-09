@@ -36,90 +36,90 @@ module Cyclone_X_rightFrame(isLeft=false) {
   rod_nut_len = 0.8*axes_Xthreaded_rodD;
   X_motorModel = Nema17;	
 	
-	module Cyclone_XsubPart_gearCover() {
-		effectiveXgearSeparation = axes_XgearSeparation+0.5;
-		nema_screw_separation = lookup(NemaDistanceBetweenMountingHoles, X_motorModel);
-		
-		motorGearRadius = axes_XgearSeparation/(1+axes_XgearRatio)+gearCover_margin;
-		rodGearRadius = axes_XgearSeparation/(1+1/axes_XgearRatio)+gearCover_margin+rodGearAddedgearCover_margin;
-		
-		difference() {
-			union() {
-				// Cover for the rod gear
-				rotate([0,90,0])
-					cylinder(r=rodGearRadius+gearCover_wallThickness, h=coverHeight);
-				translate([coverHeight,0,0])
-					rotate([0,90,0])
-						cylinder(r1=rodGearRadius+gearCover_wallThickness, r2=rodGearRadius+gearCover_wallThickness+coverExtraRadius, h=coverExtraHeight+gearCover_wallThickness);
-				// Translate to motor position
-				rotate([motorRotatedOffset,0,0]) {
-					translate([0,effectiveXgearSeparation,0])
-						rotate([-motorRotatedOffset,0,0]) {
-							// Cover for the motor gear
-							rotate([0,90,0]) cylinder(r=motorGearRadius+gearCover_wallThickness, h=coverHeight);
-							translate([coverHeight,0,0])
-								rotate([0,90,0]) cylinder(r1=motorGearRadius+gearCover_wallThickness, r2=motorGearRadius+gearCover_wallThickness+coverExtraRadius, h=coverExtraHeight+gearCover_wallThickness);
-							// Cylinder for the support screw
-							translate([0,-nema_screw_separation/2,nema_screw_separation/2])
-								rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2+gearCover_wallThickness, h=coverHeight);
-						}
-				}
-			}
-			translate([-0.02,0,0])
-				union() {
-					// Truncation for avoiding collisions with Y carriage (needed for the Y gear cover)
-					translate([0,-rodGearRadius/2,-rodGearRadius-0.5])
-						rotate([0,90+gearCover_truncationAngle,0]) cube(rodGearRadius);
-					// Hole for the rod gear
-					rotate([0,90,0])
-						cylinder(r=rodGearRadius, h=coverHeight);
-					translate([coverHeight-0.02,0,0])
-						rotate([0,90,0])
-							cylinder(r1=rodGearRadius, r2=rodGearRadius+coverExtraRadius, h=coverExtraHeight);
-					rotate([0,90,0])
-						cylinder(r=rodGearRadius+coverExtraRadius, h=coverHeight+coverExtraHeight+gearCover_wallThickness+0.1);
-					// Translate to motor position
-					rotate([motorRotatedOffset,0,0]) {
-						translate([0,effectiveXgearSeparation,0])
-							rotate([-motorRotatedOffset,0,0]) {
-								difference() {
-									union() {
-										// Hole for the motor gear
-										rotate([0,90,0]) cylinder(r=motorGearRadius, h=coverHeight);
-										translate([coverHeight-0.02,0,0])
-											rotate([0,90,0]) cylinder(r1=motorGearRadius, r2=motorGearRadius+coverExtraRadius, h=coverExtraHeight);
-										rotate([0,90,0]) cylinder(r=motorGearRadius+coverExtraRadius, h=coverHeight+coverExtraHeight+gearCover_wallThickness+0.1);
-										// Outer hole for the support screw
-										translate([0,-nema_screw_separation/2,nema_screw_separation/2])
-											rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2, h=coverHeight+coverExtraHeight*2);
-									}
-									// Support screw holder
-									translate([0,-nema_screw_separation/2,nema_screw_separation/2])
-										rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2+gearCover_wallThickness, h=gearCover_wallThickness);
-								}
-								// Inner hole for the support screw
-								translate([0,-nema_screw_separation/2,nema_screw_separation/2])
-									rotate([0,90,0]) cylinder(r=(gearCover_screwHeadSpaceDiam+1)/2, h=coverHeight+0.1);
-								// Holes for the other three screws
-								translate([0,nema_screw_separation/2,nema_screw_separation/2])
-									rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2, h=gearCover_screwHeadSpaceHeight/2);
-								translate([gearCover_screwHeadSpaceHeight/2,nema_screw_separation/2,nema_screw_separation/2])
-									rotate([0,90,0]) sphere(r=gearCover_screwHeadSpaceDiam/2);
-								
-								translate([0,nema_screw_separation/2,-nema_screw_separation/2])
-									rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2, h=gearCover_screwHeadSpaceHeight/2);
-								translate([gearCover_screwHeadSpaceHeight/2,nema_screw_separation/2,-nema_screw_separation/2])
-									rotate([0,90,0]) sphere(r=gearCover_screwHeadSpaceDiam/2);
-								
-								translate([0,-nema_screw_separation/2,-nema_screw_separation/2])
-									rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2, h=gearCover_screwHeadSpaceHeight/2);
-								translate([gearCover_screwHeadSpaceHeight/2,-nema_screw_separation/2,-nema_screw_separation/2])
-									rotate([0,90,0]) sphere(r=gearCover_screwHeadSpaceDiam/2);
-							}
-					}
-				}
-		}
-	}
+//	module Cyclone_XsubPart_gearCover() {
+//		effectiveXgearSeparation = axes_XgearSeparation+0.5;
+//		nema_screw_separation = lookup(NemaDistanceBetweenMountingHoles, X_motorModel);
+//		
+//		motorGearRadius = axes_XgearSeparation/(1+axes_XgearRatio)+gearCover_margin;
+//		rodGearRadius = axes_XgearSeparation/(1+1/axes_XgearRatio)+gearCover_margin+rodGearAddedgearCover_margin;
+//		
+//		difference() {
+//			union() {
+//				// Cover for the rod gear
+//				rotate([0,90,0])
+//					cylinder(r=rodGearRadius+gearCover_wallThickness, h=coverHeight);
+//				translate([coverHeight,0,0])
+//					rotate([0,90,0])
+//						cylinder(r1=rodGearRadius+gearCover_wallThickness, r2=rodGearRadius+gearCover_wallThickness+coverExtraRadius, h=coverExtraHeight+gearCover_wallThickness);
+//				// Translate to motor position
+//				rotate([motorRotatedOffset,0,0]) {
+//					translate([0,effectiveXgearSeparation,0])
+//						rotate([-motorRotatedOffset,0,0]) {
+//							// Cover for the motor gear
+//							rotate([0,90,0]) cylinder(r=motorGearRadius+gearCover_wallThickness, h=coverHeight);
+//							translate([coverHeight,0,0])
+//								rotate([0,90,0]) cylinder(r1=motorGearRadius+gearCover_wallThickness, r2=motorGearRadius+gearCover_wallThickness+coverExtraRadius, h=coverExtraHeight+gearCover_wallThickness);
+//							// Cylinder for the support screw
+//							translate([0,-nema_screw_separation/2,nema_screw_separation/2])
+//								rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2+gearCover_wallThickness, h=coverHeight);
+//						}
+//				}
+//			}
+//			translate([-0.02,0,0])
+//				union() {
+//					// Truncation for avoiding collisions with Y carriage (needed for the Y gear cover)
+//					translate([0,-rodGearRadius/2,-rodGearRadius-0.5])
+//						rotate([0,90+gearCover_truncationAngle,0]) cube(rodGearRadius);
+//					// Hole for the rod gear
+//					rotate([0,90,0])
+//						cylinder(r=rodGearRadius, h=coverHeight);
+//					translate([coverHeight-0.02,0,0])
+//						rotate([0,90,0])
+//							cylinder(r1=rodGearRadius, r2=rodGearRadius+coverExtraRadius, h=coverExtraHeight);
+//					rotate([0,90,0])
+//						cylinder(r=rodGearRadius+coverExtraRadius, h=coverHeight+coverExtraHeight+gearCover_wallThickness+0.1);
+//					// Translate to motor position
+//					rotate([motorRotatedOffset,0,0]) {
+//						translate([0,effectiveXgearSeparation,0])
+//							rotate([-motorRotatedOffset,0,0]) {
+//								difference() {
+//									union() {
+//										// Hole for the motor gear
+//										rotate([0,90,0]) cylinder(r=motorGearRadius, h=coverHeight);
+//										translate([coverHeight-0.02,0,0])
+//											rotate([0,90,0]) cylinder(r1=motorGearRadius, r2=motorGearRadius+coverExtraRadius, h=coverExtraHeight);
+//										rotate([0,90,0]) cylinder(r=motorGearRadius+coverExtraRadius, h=coverHeight+coverExtraHeight+gearCover_wallThickness+0.1);
+//										// Outer hole for the support screw
+//										translate([0,-nema_screw_separation/2,nema_screw_separation/2])
+//											rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2, h=coverHeight+coverExtraHeight*2);
+//									}
+//									// Support screw holder
+//									translate([0,-nema_screw_separation/2,nema_screw_separation/2])
+//										rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2+gearCover_wallThickness, h=gearCover_wallThickness);
+//								}
+//								// Inner hole for the support screw
+//								translate([0,-nema_screw_separation/2,nema_screw_separation/2])
+//									rotate([0,90,0]) cylinder(r=(gearCover_screwHeadSpaceDiam+1)/2, h=coverHeight+0.1);
+//								// Holes for the other three screws
+//								translate([0,nema_screw_separation/2,nema_screw_separation/2])
+//									rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2, h=gearCover_screwHeadSpaceHeight/2);
+//								translate([gearCover_screwHeadSpaceHeight/2,nema_screw_separation/2,nema_screw_separation/2])
+//									rotate([0,90,0]) sphere(r=gearCover_screwHeadSpaceDiam/2);
+//								
+//								translate([0,nema_screw_separation/2,-nema_screw_separation/2])
+//									rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2, h=gearCover_screwHeadSpaceHeight/2);
+//								translate([gearCover_screwHeadSpaceHeight/2,nema_screw_separation/2,-nema_screw_separation/2])
+//									rotate([0,90,0]) sphere(r=gearCover_screwHeadSpaceDiam/2);
+//								
+//								translate([0,-nema_screw_separation/2,-nema_screw_separation/2])
+//									rotate([0,90,0]) cylinder(r=gearCover_screwHeadSpaceDiam/2, h=gearCover_screwHeadSpaceHeight/2);
+//								translate([gearCover_screwHeadSpaceHeight/2,-nema_screw_separation/2,-nema_screw_separation/2])
+//									rotate([0,90,0]) sphere(r=gearCover_screwHeadSpaceDiam/2);
+//							}
+//					}
+//				}
+//		}
+//	}
 	
 	
 	module Cyclone_X_endstopHolder(holes=false) {
@@ -252,7 +252,7 @@ module Cyclone_X_rightFrame(isLeft=false) {
 				rotate([0,90,0])
 						rotate([0,0,90])
 							hole_for_screw(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0, invert=true);
-			translate([0,dimY-2*footSeparation,0])
+			translate([0,dimY-2*footSeparation-6,0])
 				rotate([0,90,0])
 						rotate([0,0,90])
 							hole_for_screw(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0, invert=true);
@@ -263,9 +263,9 @@ module Cyclone_X_rightFrame(isLeft=false) {
 	// TRANSLATE REFERENCE POSITION to the left frame, X lower smooth rod end
 	translate([-axes_Xreference_posX,axes_Xreference_posY,axes_Xreference_height]) {
 		if(draw_references) color("red") %frame(20);
-		rotate([0,0,-90])
-			rotate([0,90,0])
-				rodHolder(rodD=axes_Ysmooth_rodD, screwSize=rodScrewSize);
+//		rotate([0,0,-90])
+//			rotate([0,90,0])
+//				rodHolder(rodD=axes_Ysmooth_rodD, screwSize=rodScrewSize);
 		// TRANSLATE REFERENCE POSITION to the threaded rod
 		translate([0,axes_Xsmooth_separation,0]) {
 			if(draw_references) color("green") %frame(20);
@@ -278,9 +278,9 @@ module Cyclone_X_rightFrame(isLeft=false) {
 				translate([axes_Xthreaded_rodD,0,0]){
 					rotate([0,-90,0])
 						nut(size=axes_Xthreaded_rodD, echoPart=true);
-					translate([axes_Xthreaded_rodD-7,0,0])
-						rotate([0,-90,0]) color(color_movingPart)
-						cyclone_rod_gear(Gear_N_Teeth=X_rodGearRatio,gearHeight=X_gear_thickness,nutSize=8,tolerance=0);
+//					translate([axes_Xthreaded_rodD-7,0,0])
+//						rotate([0,-90,0]) color(color_movingPart)
+//						cyclone_rod_gear(Gear_N_Teeth=X_rodGearRatio,gearHeight=X_gear_thickness,nutSize=8,tolerance=0);
 				}
 				// Translate to motor position
 			  rotate([motorRotatedOffset,0,0]) {
@@ -288,28 +288,28 @@ module Cyclone_X_rightFrame(isLeft=false) {
 						rotate([-motorRotatedOffset,0,0]) {
 							translate([-motorWallSeparation,0,0]) rotate([0,90,0])
 							  stepperMotor(screwHeight=motorWallSeparation, echoPart=true);
-							translate([axes_Xthreaded_rodD+1.5,0,0])
-							  rotate([0,-90,0]) color(color_movingPart)
-							    cyclone_motor_gear(Gear_N_Teeth=X_motorGearRatio,gearHeight=X_gear_thickness,tolerance=0);
+//							translate([axes_Xthreaded_rodD+1.5,0,0])
+//							  rotate([0,-90,0]) color(color_movingPart)
+//							    cyclone_motor_gear(Gear_N_Teeth=X_motorGearRatio,gearHeight=X_gear_thickness,tolerance=0);
 						}
 				}
 				translate([0.1,0,0])
 					color(color_stillPart) Cyclone_XsubPart_gearCover();
 			}
-			translate([0,0,axes_Xsmooth_separation])
-				rotate([0,0,-90])
-					rodHolder(rodD=axes_Ysmooth_rodD, screwSize=rodScrewSize);
+//			translate([0,0,axes_Xsmooth_separation])
+//				rotate([0,0,-90])
+//					rodHolder(rodD=axes_Ysmooth_rodD, screwSize=rodScrewSize);
 		}
 	}
 	translate([-axes_Xreference_posX-dimX-footSeparation,axes_Xreference_posY+footSeparation,-axes_Yreference_height+footThickness]) {
-		rotate([0,90,0])
-				rotate([0,0,90])
-					screw_and_nut(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0, invert=true, autoNutOffset=true, echoPart=true);
+//		rotate([0,90,0])
+//				rotate([0,0,90])
+//					screw_and_nut(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0, invert=true, autoNutOffset=true, echoPart=true);
 		translate([0,dimY/2,0])
 			rotate([0,90,0])
 					rotate([0,0,90])
 						screw_and_nut(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0, invert=true, autoNutOffset=true, echoPart=true);
-		translate([0,dimY-2*footSeparation,0])
+		translate([0,dimY-2*footSeparation-6,0])
 			rotate([0,90,0])
 					rotate([0,0,90])
 						screw_and_nut(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0, invert=true, autoNutOffset=true, echoPart=true);
@@ -353,7 +353,7 @@ module rodHolder(rodD=8.5, screwSize=3, height=0, sideLen=0, thickness=5, space=
 				rotate([90,0,0])
 					hole_for_screw(size=screwSize,length=dimZ+15,nutDepth=5,nutAddedLen=0,captiveLen=10, rot=90);
 			standard_rod(diam=rodD, length=dimY*4, threaded=false, renderPart=true, center=true);
-			rodHolder(rodD=rodD, screwSize=screwSize, negative=true);
+//			rodHolder(rodD=rodD, screwSize=screwSize, negative=true);
 		}
 		// Draw screws
 		translate([screwSize+screwAditionalDistance,-dimY/2,dimZ+0.01])

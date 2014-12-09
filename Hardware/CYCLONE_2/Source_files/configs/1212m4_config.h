@@ -26,7 +26,7 @@
 		axes_Xreference_height	= 64 + animatePart(6); // relative to Y reference
 		axes_Zreference_height	= -3 + animatePart(7) + animatePart(9); // relative to X reference
 
-		axes_Xreference_posY	= -81-animatePart(8)-animatePart(9); // relative to Y reference. Moves the X axis towards the front of the machine
+		axes_Xreference_posY	= -139-animatePart(8)-animatePart(9); // relative to Y reference. Moves the X axis towards the front of the machine
 		axes_Zreference_posY	= 14; // relative to X reference. Positions Z rods between the Y rods
 
 		axes_Y_threaded_height 	= 30 + animatePart(5);

@@ -78,7 +78,7 @@ render_2D_or_3D() {
 	if(draw_references) %frame();
 
 	// Main base for the machine
-	beveledBase([base_size_X,base_size_Y,base_thickness], radius=base_corner_radius, res=base_corner_res, echoPart=true, renderPart=render_bases_outline);
+//	beveledBase([base_size_X,base_size_Y,base_thickness], radius=base_corner_radius, res=base_corner_res, echoPart=true, renderPart=render_bases_outline);
 
 
 	// A4 paper sheet for reference
@@ -87,14 +87,14 @@ render_2D_or_3D() {
 
 	// Cyclone foot stands
 	translate([0,0,-base_thickness]) {
-		translate([base_size_X/2-foot_offset,base_size_Y/2-foot_offset])
-			rubberFoot(echoPart=true);
-		translate([-base_size_X/2+foot_offset,base_size_Y/2-foot_offset])
-			rubberFoot(echoPart=true);
-		translate([-base_size_X/2+foot_offset,-base_size_Y/2+foot_offset])
-			rubberFoot(echoPart=true);
-		translate([base_size_X/2-foot_offset,-base_size_Y/2+foot_offset])
-			rubberFoot(echoPart=true);
+//		translate([base_size_X/2-foot_offset,base_size_Y/2-foot_offset])
+//			rubberFoot(echoPart=true);
+//		translate([-base_size_X/2+foot_offset,base_size_Y/2-foot_offset])
+//			rubberFoot(echoPart=true);
+//		translate([-base_size_X/2+foot_offset,-base_size_Y/2+foot_offset])
+//			rubberFoot(echoPart=true);
+//		translate([base_size_X/2-foot_offset,-base_size_Y/2+foot_offset])
+//			rubberFoot(echoPart=true);
 	}
 
 
@@ -114,7 +114,7 @@ render_2D_or_3D() {
 					// Draw right Y smooth rod
 					rotate([0,0,180]) standard_rod(diam=axes_Ysmooth_rodD, length=axes_Ysmooth_rodLen, threaded=false, echoPart=true);
 						
-						Cyclone_X_rightFrame();
+						!Cyclone_X_rightFrame();
 			}
 	
 	
