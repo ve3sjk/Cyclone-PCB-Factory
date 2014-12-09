@@ -43,8 +43,8 @@
 		workbed_thickness		= 8+3;
 		workbed_separation_from_Y_smooth_rod = 10;
 		PCBholder_height 		= 10;
-		PCB_dimX 				= 200;
-		PCB_dimY 				= 150;
+		PCB_dimX 				= 160;
+		PCB_dimY 				= 100;
 		PCB_dimZ 				= 1.6;
 		PCB_holder_edge_length 	= 3;
 		
@@ -194,7 +194,7 @@
 
 	// --- DXF output ---
 	// Activate/Deactivate rendering auxiliary references (LCS axis, etc)
-		draw_references = false; // Show reference axis's
+		draw_references = true; // Show reference axis's
 		render_DXF_base = false; // Render bottom base for DXF export
 		render_DXF_workbed = false; // Render work bed for DXF export
 		render_bases_outline = false; //Toggle for rendering outline DXFs
