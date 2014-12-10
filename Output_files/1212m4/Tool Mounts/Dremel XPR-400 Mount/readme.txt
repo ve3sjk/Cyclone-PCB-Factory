@@ -1,0 +1,1 @@
+these file are in development to mount and xpr-400 series dremel tool. Sliced for Replicator 2x Left extruder, 232c, 130c hbp, 80mm/sec. Tested files were printed on mirror glass plate. Files include raft and manual support structure when needed.
