@@ -225,28 +225,32 @@
 		
 	// --- Parts ---
 		Render_X_leftFrame = true;
-		Render_X_rightFrame = true;
-		Render_X_carriage = true;
-		Render_Z_carriage = true;
-		Render_Z_carriageTop = true;
-		Render_Z_carriageBottom = true;
-		Render_Y_leftSmoothRodIdler = true;
-		Render_Y_rightSmoothRodIdler = true;
-		Render_Y_frontFrame = true;
+		Render_X_rightFrame = false;
+		Render_X_carriage = false;
+		Render_Z_carriage = false;
+		Render_Z_carriageTop = false;
+		Render_Z_carriageBottom = false;
+		Render_Y_leftSmoothRodIdler = false;
+		Render_Y_rightSmoothRodIdler = false;
+		Render_Y_frontFrame = false;
 		Render_Y_backFrame = true;
-		Render_Y_carriage = true;
-		Render_control_board = true;
-		Render_Y_gearCover = true;
-		Render_Y_motorGear = true;
-		Render_Y_rodGear = true;
-		Render_X_gearCover = true;
-		Render_X_motorGear = true;
-		Render_X_rodGear = true;
-		Render_PCBholderTop = true;
-		Render_PCBholderBottom = true;
-		Render_YsubPart_linearBearingHolders = true;
-		Render_YsubPart_nutHolder = true;
+		Render_Y_carriage = false;
+		Render_control_board = false;
+		Render_Y_gearCover = false;
+		Render_Y_motorGear = false;
+		Render_Y_rodGear = false;
+		Render_X_gearCover = false;
+		Render_X_motorGear = false;
+		Render_X_rodGear = false;
+		Render_PCBholderTop = false;
+		Render_PCBholderBottom = false;
+		Render_YsubPart_linearBearingHolders = false;
+		Render_YsubPart_nutHolder = false;
 		//Render_rodHolder = true;
+		Render_X_leftFrame_endstop = false;
+		Render_X_rightFrame_endstop = false;
+		Render_Y_backFrame_endstop = true;
+		Render_Y_frontFrame_endstop = false;
 		
 		alt_XZ_carriage = false;
 		

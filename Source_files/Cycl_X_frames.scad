@@ -214,9 +214,12 @@ module Cyclone_X_rightFrame(isLeft=false) {
 				// TRANSLATE REFERENCE POSITION to the threaded rod
 				translate([-0.01,axes_Xsmooth_separation,0]) {
 					rotate([0,-90,0])
-					 	color(color_stillPart) cylinder(r=axes_Xsmooth_separation,h=partThickness);
-					if(isLeft) 
-						Cyclone_X_endstopHolder(holes=false);
+					 	color(color_stillPart) cylinder(r=axes_Xsmooth_separation,h=partThickness);
+                                    
+					if(isLeft) 
+                                      if(Render_X_leftFrame_endstop)
+						Cyclone_X_endstopHolder(holes=false);
+                                      
 				}
 			}
 		}
@@ -244,9 +247,10 @@ module Cyclone_X_rightFrame(isLeft=false) {
 							rotate([-motorRotatedOffset,0,0])
 								rotate([0,90,0]) stepperMotor_mount(motorWallSeparation, sideLen=Xmotor_sideLen, slideOut=true);
 			// Endstop holder
-			if(isLeft) 
+			if(isLeft) 
+                            if(Render_X_leftFrame_endstop)
 						Cyclone_X_endstopHolder(holes=true);
-			
+                            
 			translate([0,0,axes_Xsmooth_separation]) {
 				rotate([0,0,90]) standard_rod(diam=axes_Xsmooth_rodD, length=partThickness*4, threaded=false, renderPart=true, center=true);
 				rotate([0,0,-90])
