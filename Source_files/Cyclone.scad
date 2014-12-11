@@ -67,8 +67,9 @@ include <Cycl_Z_carriage.scad>
 include <Cycl_Z_carriage_alt.scad>
 include <Cycl_X_frames.scad>
 include <Cycl_Y_carriage.scad>
-include <Cycl_Y_frames.scad>
-
+include <Cycl_Y_frames.scad>
+//include <Cycl_Endstop_holder.scad>
+include <Cycl_Endstop_holder_alt.scad>
 
 // This small module is used to select if an object is rendered as a 2D plane or as a 3D object
 module render_2D_or_3D() {
