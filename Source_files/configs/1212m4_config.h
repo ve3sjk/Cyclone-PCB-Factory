@@ -233,7 +233,7 @@
 		Render_Y_leftSmoothRodIdler = false;
 		Render_Y_rightSmoothRodIdler = false;
 		Render_Y_frontFrame = false;
-		Render_Y_backFrame = true;
+		Render_Y_backFrame = false;
 		Render_Y_carriage = false;
 		Render_control_board = false;
 		Render_Y_gearCover = false;
@@ -249,7 +249,7 @@
 		//Render_rodHolder = true;
 		Render_X_leftFrame_endstop = false;
 		Render_X_rightFrame_endstop = false;
-		Render_Y_backFrame_endstop = true;
+		Render_Y_backFrame_endstop = false;
 		Render_Y_frontFrame_endstop = false;
 		
 		alt_XZ_carriage = false;

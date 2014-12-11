@@ -214,11 +214,11 @@ module Cyclone_X_rightFrame(isLeft=false) {
 				// TRANSLATE REFERENCE POSITION to the threaded rod
 				translate([-0.01,axes_Xsmooth_separation,0]) {
 					rotate([0,-90,0])
-					 	color(color_stillPart) cylinder(r=axes_Xsmooth_separation,h=partThickness);
+					 	color(color_stillPart) cylinder(r=axes_Xsmooth_separation,h=partThickness);
                                     
-					if(isLeft) 
+					if(isLeft) 
                                       if(Render_X_leftFrame_endstop)
-						Cyclone_X_endstopHolder(holes=false);
+						Cyclone_X_endstopHolder(holes=false);
                                       
 				}
 			}
@@ -247,7 +247,7 @@ module Cyclone_X_rightFrame(isLeft=false) {
 							rotate([-motorRotatedOffset,0,0])
 								rotate([0,90,0]) stepperMotor_mount(motorWallSeparation, sideLen=Xmotor_sideLen, slideOut=true);
 			// Endstop holder
-			if(isLeft) 
+			if(isLeft) 
                             if(Render_X_leftFrame_endstop)
 						Cyclone_X_endstopHolder(holes=true);
                             
@@ -267,7 +267,7 @@ module Cyclone_X_rightFrame(isLeft=false) {
 				rotate([0,90,0])
 						rotate([0,0,90])
 							hole_for_screw(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0,tolerance=screwHoleTolerance, invert=true);
-			translate([0,dimY-2*footSeparation,0])
+			translate([0,dimY-2*footSeparation-6,0])
 				rotate([0,90,0])
 						rotate([0,0,90])
 							hole_for_screw(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0,tolerance=screwHoleTolerance, invert=true);
@@ -278,9 +278,9 @@ module Cyclone_X_rightFrame(isLeft=false) {
 	// TRANSLATE REFERENCE POSITION to the left frame, X lower smooth rod end
 	translate([-axes_Xreference_posX,axes_Xreference_posY,axes_Xreference_height]) {
 		if(draw_references) color("red") %frame(20);
-		rotate([0,0,-90])
-			rotate([0,90,0])
-				rodHolder(rodD=axes_Ysmooth_rodD, screwSize=rodScrewSize);
+//		rotate([0,0,-90])
+//			rotate([0,90,0])
+//				rodHolder(rodD=axes_Ysmooth_rodD, screwSize=rodScrewSize);
 		// TRANSLATE REFERENCE POSITION to the threaded rod
 		translate([0,axes_Xsmooth_separation,0]) {
 			if(draw_references) color("green") %frame(20);
@@ -322,9 +322,9 @@ module Cyclone_X_rightFrame(isLeft=false) {
 						color(color_stillPart) Cyclone_XsubPart_gearCover();
 				}
 			}
-			translate([0,0,axes_Xsmooth_separation])
-				rotate([0,0,-90])
-					rodHolder(rodD=axes_Ysmooth_rodD, screwSize=rodScrewSize);
+//			translate([0,0,axes_Xsmooth_separation])
+//				rotate([0,0,-90])
+//					rodHolder(rodD=axes_Ysmooth_rodD, screwSize=rodScrewSize);
 		}
 	}
 	translate([-axes_Xreference_posX-dimX-footSeparation,axes_Xreference_posY+footSeparation,-axes_Yreference_height+footThickness]) {
@@ -335,7 +335,7 @@ module Cyclone_X_rightFrame(isLeft=false) {
 			rotate([0,90,0])
 					rotate([0,0,90])
 						screw_and_nut(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0,invert=true,autoNutOffset=true,echoPart=true);
-		translate([0,dimY-2*footSeparation,0])
+		translate([0,dimY-2*footSeparation-6,0])
 			rotate([0,90,0])
 					rotate([0,0,90])
 						screw_and_nut(size=footScrewSize,length=footThickness+base_thickness,nutDepth=0,nutAddedLen=0,captiveLen=0,invert=true,autoNutOffset=true,echoPart=true);
