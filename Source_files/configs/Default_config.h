@@ -237,5 +237,6 @@
 		//Render_rodHolder = true;
 		
 		alt_XZ_carriage = false;
+		alt_Z_nut = false;
 		
 		
