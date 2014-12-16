@@ -9,17 +9,17 @@ $fa = 5; // Minimum angle for fragments [degrees]
 $fs = 0.5; // Minimum fragment size [mm]
 
 
-dremel_accessory_diam = 20;
-dremel_accesory_height = 15-2;
+dremel_accessory_diam = 19;
+dremel_accesory_height = 33.6-5;
 
 screws_vertical_offset = 1;
 
 aspirator_thickness_thick = 2;
-aspirator_thickness_slim = 1;
+aspirator_thickness_slim = 2;
 aspirator_thickness_screw = 4;
 
 aspirator_tube_diam = 16+0.5;
-aspirator_tube_holder_height = 15;
+aspirator_tube_holder_height = 20;
 
 aspirator_hole_height = 15-5;
 aspirator_hole_diam = 35+15;
@@ -27,14 +27,14 @@ aspirator_hole_Yscale = 0.5;
 
 edge_height = 2;
 
-dremel_wrench_diam = 0;
-dremel_wrench_hole_offset = 8;
+dremel_wrench_diam = 2;
+dremel_wrench_hole_offset = 0;
 
 dremel_accessory_screw_separation = dremel_accessory_diam+aspirator_thickness_screw+0.8;
 dremel_accessory_angle = 0;
 
 dremel_accessory_tube_offset = dremel_accessory_diam-aspirator_tube_diam;
-aspirator_tube_separation = dremel_accessory_diam+aspirator_tube_diam+aspirator_thickness_screw*2+1.5;
+aspirator_tube_separation = dremel_accessory_diam+aspirator_tube_diam+aspirator_thickness_screw*2+1.5+20;
 dremel_accessory_hole_offset = 0;//dremel_accessory_diam-aspirator_hole_diam;
 
 // Useful MCAD functions reference
@@ -131,7 +131,9 @@ module aspirator_accessory_holes() {
 		cube([aspirator_tube_separation,2.5,dremel_accesory_height+0.01],center=true);
 	// Frontal hole for the wrench
 	translate([0,(dremel_accessory_diam+aspirator_thickness_thick)/2,-(dremel_accesory_height+aspirator_hole_height)/2-dremel_wrench_hole_offset])
-		cube([dremel_wrench_diam,10,aspirator_hole_height+0.01],center=true);
+//    rotate([180,0,0]);
+//            cube([dremel_wrench_diam,10,aspirator_hole_height+0.01],center=true);
+        cube([20,aspirator_hole_height+0.01,dremel_wrench_diam],center=true);
 	// Holes for the nut/screws
 	#translate([dremel_accessory_screw_separation/2,0,screws_vertical_offset])
 		rotate([0,0,-dremel_accessory_angle])
@@ -176,5 +178,5 @@ difference() {
 }
 
 // Render the detachable extender
-!aspirator_accessory_extender();
+//!aspirator_accessory_extender();
 
