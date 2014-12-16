@@ -83,7 +83,7 @@ render_2D_or_3D() {
 	if(draw_references) %frame();
 
 	// Main base for the machine
-	beveledBase([base_size_X,base_size_Y,base_thickness], radius=base_corner_radius, res=base_corner_res, echoPart=true, renderPart=render_bases_outline);
+//	beveledBase([base_size_X,base_size_Y,base_thickness], radius=base_corner_radius, res=base_corner_res, echoPart=true, renderPart=render_bases_outline);
 
 
 	// A4 paper sheet for reference

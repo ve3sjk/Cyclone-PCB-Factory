@@ -90,7 +90,7 @@
 			axes_Ysmooth_rodLen	= 330 + animatePart(2);
 			axes_Ysmooth_rodD	= 8.5 + animatePart(4,dist=5);
 		// Y threaded rod
-			axes_Ythreaded_rodLen	= axes_Ysmooth_rodLen-10;
+			axes_Ythreaded_rodLen	= axes_Ysmooth_rodLen+10;
 			axes_Ythreaded_rodD	= 8.5 + animatePart(4,dist=5);
 		// X smooth rod
 			axes_Xsmooth_rodLen	= 330 + animatePart(1,overlap=0);
@@ -151,7 +151,7 @@
 		
 	// --- Gears ---
 		axes_XgearSeparation = 37;
-	  X_rodGearRatio = 21; // Number of tooth
+		X_rodGearRatio = 21; // Number of tooth
 		X_motorGearRatio = 21; // Number of tooth
 		X_gear_thickness = 10;
 		Z_rodGearRatio = 15; // Number of tooth
@@ -174,12 +174,15 @@
 		gearCover_truncationAngle = 10;
 		
 	// --- Spindle Motor ---
-		spindle_motor_diam_top = 51.3;
-		spindle_motor_diam_top_smaller = 47.5;
+		spindle_motor_diam_top = 55.5;
+		spindle_motor_diam_top_smaller = 44.8;
 		spindle_motor_diam = 47.5;
-		spindle_motor_sidelen = 32;
+		spindle_motor_sidelen = 45;
 		spindle_holder_thickness = 8;
 		spindle_motor_length = 90;
+		spindle_motor_diam_btm = 55.5;
+		spindle_motor_diam_btm_smaller = 44.8;
+		
 		
 	// --- Text ---
 		textHscale = 0.8;
@@ -212,11 +215,11 @@
 
 	// --- DXF output ---
 	// Activate/Deactivate rendering auxiliary references (LCS axis, etc)
-		draw_references = false; // Show reference axis's
+		draw_references = true; // Show reference axis's
 		render_DXF_base = false; // Render bottom base for DXF export
 		render_DXF_workbed = false; // Render work bed for DXF export
 		render_bases_outline = false; //Toggle for rendering outline DXFs
-		DXF_offset = 0.4; //Needed to adjust the tolerance of the laser cutter
+		DXF_offset = 0.0; //Needed to adjust the tolerance of the laser cutter
 		
 	// --- Carriage positions ---
 		axes_Xcarriage_pos = axes_Xsmooth_rodLen/2+sin($t*360)*axes_Xsmooth_rodLen/3;
@@ -224,17 +227,17 @@
 		axes_Zcarriage_pos = axes_Zsmooth_rodLen/2+sin($t*360)*axes_Zsmooth_rodLen/8;	
 		
 	// --- Parts ---
-		Render_X_leftFrame = true;
+		Render_X_leftFrame = false;
 		Render_X_rightFrame = false;
-		Render_X_carriage = false;
-		Render_Z_carriage = false;
+		Render_X_carriage = true;
+		Render_Z_carriage = true;
 		Render_Z_carriageTop = false;
 		Render_Z_carriageBottom = false;
 		Render_Y_leftSmoothRodIdler = false;
 		Render_Y_rightSmoothRodIdler = false;
 		Render_Y_frontFrame = false;
 		Render_Y_backFrame = false;
-		Render_Y_carriage = false;
+		Render_Y_carriage = true;
 		Render_control_board = false;
 		Render_Y_gearCover = false;
 		Render_Y_motorGear = false;
@@ -244,8 +247,8 @@
 		Render_X_rodGear = false;
 		Render_PCBholderTop = false;
 		Render_PCBholderBottom = false;
-		Render_YsubPart_linearBearingHolders = false;
-		Render_YsubPart_nutHolder = false;
+		Render_YsubPart_linearBearingHolders = true;
+		Render_YsubPart_nutHolder = true;
 		//Render_rodHolder = true;
 		Render_X_leftFrame_endstop = false;
 		Render_X_rightFrame_endstop = false;
