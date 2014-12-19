@@ -54,6 +54,28 @@ module Cyclone_X_carriage() {
 		}
 	}
 	
+	module Cyclone_XsubPart_alt_nutHolder(holes=false) {
+		rodTolerance = X_threaded_rod_Tolerance;
+		rodSize = Z_threaded_rodNutSize; // M3, M4, etc (integers only)
+		dimZ = rod_nut_len+6; // Nut holder thickness
+		
+		if(!holes) {
+			rotate([0,180,0])
+				hull() {
+					cylinder(r=axes_Zthreaded_rodD+1, h=dimZ);
+					translate([0,-axes_Zreference_posY-axes_ZthreadedReference_posY+axes_effective_Xsmooth_separation,dimZ/2])
+						cube([dimX,0.1,dimZ], center=true);
+				}
+		} else {
+			// Hole for the main Z nut
+			translate([0,0,-3]) rotate([90,0,0]) hole_for_nut(size=rodSize,nutAddedLen=0,captiveLen=20,rot=90,tolerance=0.2);
+			// Hole for the Z threaded rod
+			translate([0,0,-axes_effective_Xsmooth_separation+dimZ])
+				rotate([90,0,0]) standard_rod(diam=axes_Zthreaded_rodD+rodTolerance, length=axes_effective_Xsmooth_separation*2, threaded=true, renderPart=true, center=true);
+			translate([0,0,-dimZ-0.01]) rotate([180,0,0]) cylinder(r=axes_Zthreaded_rodD*0.9, h=axes_effective_Xsmooth_separation+dimZ*2, $fn=6);
+		}
+	}
+	
 	module Cyclone_XsubPart_XnutHolder(holes=false) {
 		rodSize = X_threaded_rodNutSize; // M3, M4, etc (integers only)		
 		
@@ -178,8 +200,13 @@ module Cyclone_X_carriage() {
 			translate([0,axes_effective_Xsmooth_separation+screwExtension/2+linearBearingDiameter/2,axes_effective_Xsmooth_separation])
 				cylinder(r=screwSize*2,h=screwLength, center=true, $fn=6);
 			// Z nut holder
-			translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation+(linearBearingDiameter+sideExtensions)/2])
-				Cyclone_XsubPart_ZnutHolder(holes=false);
+			if(!alt_Z_nut) {
+				translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation+(linearBearingDiameter+sideExtensions)/2])
+					Cyclone_XsubPart_ZnutHolder(holes=false);
+			} else {
+				translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation-(linearBearingDiameter/4)/2])
+					Cyclone_XsubPart_alt_nutHolder(holes=false);
+			}
 			// X nut holder
 			translate([-dimX/2,axes_effective_Xsmooth_separation,0])
 				rotate([-135,0,0]) Cyclone_XsubPart_XnutHolder(holes=false);
@@ -192,8 +219,13 @@ module Cyclone_X_carriage() {
 		difference() {
 			translate([-dimX/2-0.5,0,-sideExtensions+ZrodHolderLength])
 				cube([dimX+1,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation]);
-			translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation+(linearBearingDiameter+sideExtensions)/2])
-				Cyclone_XsubPart_ZnutHolder(mainPart=true);
+			if(!alt_Z_nut) {
+				translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation+(linearBearingDiameter+sideExtensions)/2])
+					Cyclone_XsubPart_ZnutHolder();
+			} else {
+				translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation-(linearBearingDiameter/4)/2])
+					Cyclone_XsubPart_alt_nutHolder();
+			}
 		}
 		
 		// ----- Hole for the spindle tool ------
@@ -223,8 +255,13 @@ module Cyclone_X_carriage() {
 			rotate([90,0,0]) hole_for_screw(size=screwSize,length=screwLength+screwAditionalLength,nutDepth=0,nutAddedLen=0,captiveLen=0,tolerance=screwHoleTolerance);
 		
 		// ----- Hole for the Z nut ------
-		translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation+(linearBearingDiameter+sideExtensions)/2])
-			Cyclone_XsubPart_ZnutHolder(holes=true);
+		if(!alt_Z_nut) {
+			translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation+(linearBearingDiameter+sideExtensions)/2])
+				Cyclone_XsubPart_ZnutHolder(holes=true);
+		} else {
+			translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation-(linearBearingDiameter/4)/2])
+				Cyclone_XsubPart_alt_nutHolder(holes=true);
+		}
 		
 		// ----- Hole for the X nut ------
 		translate([-dimX/2,axes_effective_Xsmooth_separation,0])
@@ -247,9 +284,15 @@ module Cyclone_X_carriage() {
 			rotate([0,-90,0]) linearBearing_single(model=X_linearBearingModel, echoPart=true);	
 
   // Draw nuts and screws
-	translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation+(linearBearingDiameter+sideExtensions)/2])	
-		rotate([180,0,0]) 
-			nut(size=8, echoPart=true);
+	if(!alt_Z_nut) {
+		translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation+(linearBearingDiameter+sideExtensions)/2])	
+			rotate([180,0,0]) 
+				nut(size=8, echoPart=true);
+	} else {
+		translate([0,axes_Zreference_posY+axes_ZthreadedReference_posY,axes_effective_Xsmooth_separation-(linearBearingDiameter/4)-1.5])	
+			rotate([180,0,90]) 
+				nut(size=8, echoPart=true);
+	}
 			
 	translate([-dimX/2,axes_effective_Xsmooth_separation,0]) rotate([-135,0,0]){
 		translate([-rod_nut_len/2+1,0,0]) rotate([90,90,90])
