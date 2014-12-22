@@ -32,7 +32,7 @@
 		axes_Y_threaded_height = 30 + animatePart(5);
 
 		axes_Ysmooth_separation	= 225 + animatePart(1,overlap=0);
-		axes_Xsmooth_separation = 50 + animatePart(9);
+		axes_Xsmooth_separation = 40 + animatePart(9);
 		axes_Zsmooth_separation = 40 + animatePart(10,overlap=0);
 
 		
@@ -227,8 +227,8 @@
 		axes_Zcarriage_pos = axes_Zsmooth_rodLen/2+sin($t*360)*axes_Zsmooth_rodLen/8;	
 		
 	// --- Parts ---
-		Render_X_leftFrame = true;
-		Render_X_rightFrame = true;
+		Render_X_leftFrame = false;
+		Render_X_rightFrame = false;
 		Render_X_carriage = true;
 		Render_Z_carriage = true;
 		Render_Z_carriageTop = false;
@@ -247,8 +247,8 @@
 		Render_X_rodGear = false;
 		Render_PCBholderTop = false;
 		Render_PCBholderBottom = false;
-		Render_YsubPart_linearBearingHolders = false;
-		Render_YsubPart_nutHolder = false;
+		Render_YsubPart_linearBearingHolders = true;
+		Render_YsubPart_nutHolder = true;
 		//Render_rodHolder = true;
 		Render_X_leftFrame_endstop = false;
 		Render_X_rightFrame_endstop = false;
